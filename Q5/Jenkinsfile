@@ -23,10 +23,14 @@ pipeline {
             steps {
                 script {
                     // ตรวจสอบว่าไฟล์ output.xml ถูกสร้างหรือไม่
-                    echo 'Checking if output.xml is created'
-                    bat 'dir Q2/output.xml'
-                    bat 'dir Q3/output.xml'
-                    bat 'dir Q4/output.xml'
+                    echo 'Checking if output.xml is created in Q2'
+                    bat 'if exist Q2\\output.xml (echo File exists) else (echo File does not exist)'
+
+                    echo 'Checking if output.xml is created in Q3'
+                    bat 'if exist Q3\\output.xml (echo File exists) else (echo File does not exist)'
+
+                    echo 'Checking if output.xml is created in Q4'
+                    bat 'if exist Q4\\output.xml (echo File exists) else (echo File does not exist)'
                 }
                 junit '**/output.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
             }
