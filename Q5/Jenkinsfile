@@ -28,7 +28,7 @@ pipeline {
 
                     bat 'Q4/log.html'
                 }
-                junit '**/log.html'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
+                junit '**/*.html'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
             
                 
             }
