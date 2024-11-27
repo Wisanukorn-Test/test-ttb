@@ -32,9 +32,9 @@ pipeline {
                     echo "Checking if output.xml exists"
                     bat 'Q4\\output.xml'
                 }
-                junit '/Q2/output.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
-                junit '/Q3/output.xml'
-                junit '/Q4/output.xml'
+                junit 'Q2/output.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
+                junit 'Q3/output.xml'
+                junit 'Q4/output.xml'
             }
         }
     }
