@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code From Git') {
+            steps {
+                git 'https://github.com/Wisanukorn-Test/test-ttb.git'
+            }
+        }
+        
+        stage('Run Test Automate') {
+            steps {
+                // รันสคริปต์ทดสอบอัตโนมัติ 
+                sh 'robot ../Q2/TestCase.robot'
+                sh 'robot ../Q3/APITest.robot'
+            }
+        }
+
+        stage('Send Result To Jenkins') {
+            steps {
+                junit '**/output.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
+            }
+        }
+    }
+}
