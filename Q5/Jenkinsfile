@@ -6,10 +6,10 @@ pipeline {
     stages {
         stage('Checkout Code From Git') {
             steps {
-                git 'https://github.com/Wisanukorn-Test/test-ttb.git'
+                git branch: 'main', url: 'https://github.com/Wisanukorn-Test/test-ttb.git'
             }
         }
-
+        
         stage('Run Test Automate') {
             steps {
                 // รันสคริปต์ทดสอบอัตโนมัติ 
