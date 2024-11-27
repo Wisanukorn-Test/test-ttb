@@ -13,15 +13,9 @@ pipeline {
         stage('Run Test Automate') {
             steps {
                 // รันสคริปต์ทดสอบอัตโนมัติ
-                bat 'robot --output Q2/output.xml --report Q2/report.html Q2/TestCase.robot'
-                bat 'robot --output Q3/output.xml Q3/APITest.robot'
-                bat 'robot --output Q4/output.xml Q4/Minimal_Todo.robot'
-            }
-        }
-
-        stage('Send Result To Jenkins') {
-            steps {
-                junit '**/Q2/output.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
+                bat 'robot Q2/TestCase.robot'
+                bat 'robot Q3/APITest.robot'
+                bat 'robot Q4/Minimal_Todo.robot'
             }
         }
     }
