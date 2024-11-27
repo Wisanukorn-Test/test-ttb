@@ -21,13 +21,6 @@ pipeline {
 
         stage('Send Result To Jenkins') {
             steps {
-                script {
-                    bat 'Q2/log.html'
-
-                    bat 'Q3/log.html'
-
-                    bat 'Q4/log.html'
-                }
                 junit '**/*.html'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
             
                 
