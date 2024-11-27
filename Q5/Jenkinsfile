@@ -21,6 +21,13 @@ pipeline {
 
         stage('Send Result To Jenkins') {
             steps {
+                script {
+                    // ตรวจสอบว่าไฟล์ output.xml ถูกสร้างหรือไม่
+                    echo 'Checking if output.xml is created'
+                    bat 'dir Q2/output.xml'
+                    bat 'dir Q3/output.xml'
+                    bat 'dir Q4/output.xml'
+                }
                 junit '**/output.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
             }
         }
