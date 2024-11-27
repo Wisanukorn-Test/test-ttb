@@ -11,13 +11,13 @@ Open Website
 
 # Function Login
 
-Input Username
+Input Username In BOX
     [Documentation]    กรอก Username
     [Arguments]    ${username}
     Wait Until Page Contains Element    ${username_input}
     Input Text    ${username_input}    ${username}    clear=True
 
-Input Password
+Input Password In BOX
     [Documentation]     กรอก Password
     [Arguments]    ${password}
     Wait Until Page Contains Element    ${password_input}
