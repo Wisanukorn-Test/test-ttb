@@ -24,13 +24,13 @@ pipeline {
                 script {
                     // ตรวจสอบว่าไฟล์ output.xml ถูกสร้างหรือไม่
                     echo "Checking if output.xml exists"
-                    bat 'dir Q2\\output.xml'
+                    bat 'Q2\\output.xml'
 
                     echo "Checking if output.xml exists"
-                    bat 'dir Q3\\output.xml'
+                    bat 'Q3\\output.xml'
 
                     echo "Checking if output.xml exists"
-                    bat 'dir Q4\\output.xml'
+                    bat 'Q4\\output.xml'
                 }
                 junit '**/Q2/output.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
                 junit '**/Q3/output.xml'
