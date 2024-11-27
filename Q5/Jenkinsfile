@@ -6,28 +6,27 @@ pipeline {
     stages {
         stage('Checkout Code From Git') {
             steps {
-                git branch: 'main', url: 'https://github.com/Wisanukorn-Test/test-ttb.git'
+                git 'https://github.com/Wisanukorn-Test/test-ttb.git'
             }
         }
-        
+
         stage('Run Test Automate') {
             steps {
-                // รันสคริปต์ทดสอบอัตโนมัติ 
-                bat 'robot --output Q2/output.xml Q2/TestCase.robot'
-                bat 'robot --output Q3/output.xml Q3/APITest.robot'
-                bat 'robot --output Q4/output.xml Q4/Minimal_Todo.robot'
+                script {
+                    try {
+                        bat 'robot --output Q2/output.xml Q2/TestCase.robot'
+                        bat 'robot --output Q3/output.xml Q3/APITest.robot'
+                        bat 'robot --output Q4/output.xml Q4/Minimal_Todo.robot'
+                    } catch (Exception e) {
+                        echo "Test automation failed with exception: ${e}"
+                        currentBuild.result = 'FAILURE'
+                    }
+                }
             }
         }
 
         stage('Send Result To Jenkins') {
             steps {
-                script {
-                    // ตรวจสอบว่าไฟล์ output.xml ถูกสร้างหรือไม่
-                    echo 'Checking if output.xml is created'
-                    bat 'dir Q2/output.xml'
-                    bat 'dir Q3/output.xml'
-                    bat 'dir Q4/output.xml'
-                }
                 junit '**/output.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
             }
         }
