@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+            APP_Test_URL = "http://127.0.0.1:4723"
+    }
     stages {
         stage('Checkout Code From Git') {
             steps {
@@ -11,8 +13,9 @@ pipeline {
         stage('Run Test Automate') {
             steps {
                 // รันสคริปต์ทดสอบอัตโนมัติ 
-                sh 'robot ../Q2/TestCase.robot'
-                sh 'robot ../Q3/APITest.robot'
+                bat 'robot ../Q2/TestCase.robot'
+                bat 'robot ../Q3/APITest.robot'
+                bat 'robot ../Q4/Minimal_Todo.robot'
             }
         }
 
