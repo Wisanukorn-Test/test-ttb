@@ -21,7 +21,7 @@ pipeline {
 
         stage('Send Result To Jenkins') {
             steps {
-                junit '**/*.html'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
+                junit '**/*.xml'  // ส่งผลลัพธ์การทดสอบไปยัง Jenkins
             
                 
             }
